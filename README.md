@@ -13,6 +13,7 @@ To launch it as a global service in a swarm cluster:
       --mount type=bind,source=/sys,target=/host/sys \
       --mount type=bind,source=/,target=/rootfs \
       --mount type=bind,source=/etc/hostname,target=/etc/host_hostname \
+      -e HOST_HOSTNAME=/etc/host_hostname \
       basi/node-exporter:latest \
       -collector.procfs /host/proc \
       -collector.sysfs /host/sys \
@@ -20,8 +21,9 @@ To launch it as a global service in a swarm cluster:
       --collector.textfile.directory /etc/node-exporter/ \
       --collectors.enabled="conntrack,diskstats,entropy,filefd,filesystem,loadavg,mdadm,meminfo,netdev,netstat,stat,textfile,time,vmstat,ipvs"
       
-The important add over the oficial image is the bind mount of the _/etc/hosts_ file in a specific location in the service.
+The important add over the official image is the bind mount of the host _/etc/hosts_ file in a specific location in the service.
 This mount is used by the container to obtain the hostname of the host where the service is running.
 
 It can be useful to use this value in a swarm cluster when obtaining data in Prometheus, while it does not support
 swarm mode natively.
+
