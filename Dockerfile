@@ -1,4 +1,4 @@
-FROM prom/node-exporter:v0.13.0
+FROM prom/node-exporter:v0.14.0
 
 ARG "version=0.1.0-dev"
 ARG "build_date=unknown"
