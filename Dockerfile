@@ -19,7 +19,7 @@ LABEL org.label-schema.vendor="Basi" \
     org.label-schema.docker.cmd.devel="" \
     org.label-schema.build-date=$build_date
 
-ENV "NODE_EXPORTER_BIN=/bin/node_exporter"
+ENV NODE_EXPORTER_BIN=/bin/node_exporter
 
 COPY ./rootfs /
 
