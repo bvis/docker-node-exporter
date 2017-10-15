@@ -1,4 +1,4 @@
-FROM prom/node-exporter:v0.14.0
+FROM prom/node-exporter:v0.15.0
 
 ARG "version=0.1.0-dev"
 ARG "build_date=unknown"
@@ -22,6 +22,7 @@ LABEL org.label-schema.vendor="Basi" \
 ENV NODE_EXPORTER_BIN=/bin/node_exporter
 
 COPY ./rootfs /
+USER root
 
 ENTRYPOINT  [ "/docker-entrypoint.sh" ]
 CMD [ "/bin/node_exporter" ]

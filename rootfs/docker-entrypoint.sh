@@ -7,6 +7,9 @@ else
   echo "host{host=\"$host_hostname\", node=\"$(hostname)\"} 1" > /etc/node-exporter/host_hostname.prom
 fi
 
-set -- $NODE_EXPORTER_BIN "$@"
+# if command starts with an option, prepend node-exporter binary
+if [ "${1:0:1}" = '-' ]; then
+  set -- $NODE_EXPORTER_BIN "$@"
+fi
 
 exec "$@"
